@@ -1,8 +1,11 @@
 import React from "react";
+import Register from "./Register";
 
 const Home = () => {
     return (
-        <h1>Nothing yet to show</h1>
+        <main>
+        <Register />
+        </main>
     )
 }
 
