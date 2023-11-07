@@ -1,8 +1,9 @@
 import React from "react";
+import HomePage from "../components/HomePage";
 
 const Home = () => {
     return (
-        <h1>Nothing yet to show</h1>
+        <HomePage/>
     )
 }
 
