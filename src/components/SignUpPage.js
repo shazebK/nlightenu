@@ -1,5 +1,5 @@
-import './AuthPage.css'
-const AuthPage=()=>{
+import './LoginSignUp.css'
+const SignUpPage=()=>{
     return (
     <div className='page'>
       <main className='main_reg'>  
@@ -38,4 +38,4 @@ const AuthPage=()=>{
     </div>
     )
 }
-export default AuthPage;
+export default SignUpPage;
