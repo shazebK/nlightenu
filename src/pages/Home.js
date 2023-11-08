@@ -1,11 +1,9 @@
 import React from "react";
-import Register from "./Register";
+import HomePage from "../components/HomePage";
 
 const Home = () => {
     return (
-        <main>
-        <Register />
-        </main>
+        <HomePage/>
     )
 }
 

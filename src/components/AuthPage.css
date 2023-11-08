@@ -1,0 +1,68 @@
+.page{
+    background-color: rgb(111, 164, 165);
+    width:100vw;
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_reg{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form_reg{
+    height:80vh;
+    width:600px;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-around;
+    border: 1mm solid white;
+    border-radius: 10px;
+    color:black;
+    background-color:white;
+    padding: 12px;
+    margin:0px;
+    padding-left: 40px;
+    padding-right: 40px;
+    z-index:4;
+}
+
+.input_reg{
+    width: 100%;
+    padding:12px;
+    border-bottom:1px solid grey;
+}   
+
+.label_reg,.p_reg{
+    background-color: white;
+    padding: 1px;
+
+}
+.p_reg{
+    font-weight: bolder;
+    text-align: center;
+    text-decoration: none;
+    font-size:40px;
+    font-family:serif;
+    text-decoration: underline;
+    text-shadow:1px 1px 2px black ;
+}
+.button_reg{
+    margin-top:30px;
+    height:35px;
+    width:400px;
+    border:solid 2px rgb(111, 164, 165);
+    border-radius: 50px;
+    margin-bottom: 50px;
+    font-size: larger;
+    font-family: cursive;
+    font-weight: 500;
+    background-color: rgb(111, 164, 165);
+    color: white;
+    text-shadow:1px 1px 1px black ;
+}
