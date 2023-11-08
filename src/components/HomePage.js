@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Navbar from "./UI/Navbar";
 import Footer from "./UI/Footer";
 import ImageTitleCard from "./UI/ImageTitleCard";
 

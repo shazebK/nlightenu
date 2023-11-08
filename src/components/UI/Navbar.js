@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "./UI/Button";
+import Button from "./Button";
 
 const Navbar = () => {
     return (
@@ -13,8 +13,8 @@ const Navbar = () => {
                 <li><Link to = "/">About</Link></li>
             </ul>
             <div className="flex">
-                <Button theme = "white">Log In</Button>
-                <Button theme = "black">Sign Up</Button>
+                <Link to = "/auth"><Button theme = "white">Log In</Button></Link>
+                <Link to = "/auth"><Button theme = "black">Sign Up</Button></Link>
             </div>
         </nav>
     );
