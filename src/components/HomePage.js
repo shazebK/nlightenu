@@ -1,12 +1,9 @@
 import React from "react";
-import Navbar from "./UI/Navbar";
-import Footer from "./UI/Footer";
 import ImageTitleCard from "./UI/ImageTitleCard";
 
 const HomePage = () => {
     return (
         <>
-        <Navbar/>
         <div className="w-full flex justify-around items-center">
             <div className="w-3/5">
                 <h1 className="text-[40px] font-bold leading-10 my-4">Learn Smart <br/> Enlighten Your Path</h1>
@@ -54,7 +51,6 @@ const HomePage = () => {
             </div> 
             <h2 className="text-[16px] font-bold my-4 cursor-pointer text-right">View More</h2>
         </div>
-        <Footer/>
         </>
     );
 }

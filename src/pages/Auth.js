@@ -1,7 +1,10 @@
-import AuthPage from "../components/AuthPage"
+import LoginPage from "../components/LoginPage";
+import SignUpPage from "../components/SignUpPage";
+import { useParams } from "react-router-dom";
 const Auth=()=>{
+    const params = useParams();
     return (
-      <AuthPage/>
+      params.authtype === "login" ? <LoginPage/> : <SignUpPage/>
     )
 }
 export default Auth;

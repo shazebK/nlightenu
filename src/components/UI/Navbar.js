@@ -13,8 +13,8 @@ const Navbar = () => {
                 <li><Link to = "/">About</Link></li>
             </ul>
             <div className="flex">
-                <Link to = "/auth"><Button theme = "white">Log In</Button></Link>
-                <Link to = "/auth"><Button theme = "black">Sign Up</Button></Link>
+                <Link to = "/auth/login"><Button theme = "white">Log In</Button></Link>
+                <Link to = "/auth/signup"><Button theme = "black">Sign Up</Button></Link>
             </div>
         </nav>
     );
