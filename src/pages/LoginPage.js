@@ -1,14 +1,15 @@
-import './LoginSignUp.css'
+import classes from "./LoginSignUp.module.css";
+
 const LoginPage=()=>{
     return (
-    <div className='page'>
-      <main className='main_reg'>  
+    <div className={classes.page}>
+      <main className = {classes.main_reg}>  
          
-         <form className="form_reg">
-         <p className='p_reg'>Login</p><hr/>
+         <form className={classes.form_reg}>
+         <p className={classes.p_reg}>Login</p><hr/>
                <input type="text" 
                placeholder="Username"
-               className='input_reg'
+               className={classes.input_reg}
                autoFocus
                required
                />
@@ -18,11 +19,11 @@ const LoginPage=()=>{
                <input type="password" 
                placeholder="Password"
                autoFocus
-               className='input_reg'
+               className={classes.input_reg}
                required
                />
                <hr />
-            <button className='button_reg'>Login</button>
+            <button className={classes.button_reg}>Login</button>
          </form>
       </main>
     </div>

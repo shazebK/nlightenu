@@ -1,8 +1,13 @@
 import React from "react";
+import { createBrowserRouter,RouterProvider } from "react-router-dom";
+
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
-import { createBrowserRouter,RouterProvider } from "react-router-dom";
 import RootLayout from "./pages/RootLayout";
+import Articles from "./pages/Articles";
+import Courses from "./pages/Courses";
+import About from "./pages/About";
+import ArticlePage,{loader as ArticlePageLoader} from "./pages/ArticlePage";
 
 const App = () => {
 
@@ -12,13 +17,37 @@ const App = () => {
       element:<RootLayout/>,
       children:[
         {
-          path : "/",
+          index:true,
+          path : "",
           element : <Home/>
         },
         {
-          path : "/auth/:authtype",
+          path : "auth/:authtype",
           element : <Auth/>,
-        }
+        },
+        {
+          path : "articles/",
+          children:[
+            {
+              index:true,
+              path:"",
+              element:<Articles/>
+            },
+            {
+              path:":articleId",
+              element:<ArticlePage/>,
+              loader:ArticlePageLoader,
+            }
+          ]
+        },
+        {
+          path : "courses",
+          element : <Courses/>
+        },
+        {
+          path : "about",
+          element : <About/>
+        },
       ],
     }
   ]);
