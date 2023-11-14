@@ -8,6 +8,7 @@ import Articles from "./pages/Articles";
 import Courses from "./pages/Courses";
 import About from "./pages/About";
 import ArticlePage,{loader as ArticlePageLoader} from "./pages/ArticlePage";
+import ArticleUpload from "./pages/ArticleUpload";
 
 const App = () => {
 
@@ -32,6 +33,10 @@ const App = () => {
               index:true,
               path:"",
               element:<Articles/>
+            },
+            {
+              path:"upload",
+              element:<ArticleUpload/>
             },
             {
               path:":articleId",
