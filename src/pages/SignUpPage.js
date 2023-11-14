@@ -1,14 +1,14 @@
-import './LoginSignUp.css'
+import classes from "./LoginSignUp.module.css";
 const SignUpPage=()=>{
     return (
-    <div className='page'>
-      <main className='main_reg'>  
+    <div className={classes.page}>
+      <main className={classes.main_reg}>  
          
-         <form className="form_reg">
-         <p className='p_reg'>Registration</p><hr />
+         <form className={classes.form_reg}>
+         <p className={classes.p_reg}>Registration</p><hr />
                <input type="text" 
                placeholder="Username"
-               className='input_reg'
+               className={classes.input_reg}
                autoFocus
                required
                />
@@ -18,7 +18,7 @@ const SignUpPage=()=>{
                <input type="password" 
                placeholder="Password"
                autoFocus
-               className='input_reg'
+               className={classes.input_reg}
                required
                />
                <hr />
@@ -26,11 +26,11 @@ const SignUpPage=()=>{
                <input type="password" 
                placeholder=" Confirm password"
                autoFocus
-               className='input_reg'
+               className={classes.input_reg}
                required
                />
                <hr />
-            <button className='button_reg'>Sign Up</button>
+            <button className={classes.button_reg}>Sign Up</button>
             
             
          </form>

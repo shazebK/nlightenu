@@ -1,5 +1,5 @@
-import LoginPage from "../components/LoginPage";
-import SignUpPage from "../components/SignUpPage";
+import LoginPage from "./LoginPage";
+import SignUpPage from "./SignUpPage";
 import { useParams } from "react-router-dom";
 const Auth=()=>{
     const params = useParams();
