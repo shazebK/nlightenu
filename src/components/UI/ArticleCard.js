@@ -1,6 +1,5 @@
 import React from "react";
 import Avatar from "./Avatar";
-import Tag from "./Tag";
 
 const ArticleCard = ({article}) => {
     return (
@@ -13,12 +12,12 @@ const ArticleCard = ({article}) => {
 
                 <div className="w-full h-42">
                     <h2 className="text-xl font-semibold">{article.title}</h2>
+                    <br/>
                     <p className="text-slate-800">{article.content.substr(0,120) + "..."}</p>
                 </div>
 
                 <div className="flex items-center text-sm text-slate-600">
                     <p>{article.date}</p>
-                    <Tag>{article.tags[0]}</Tag>
                 </div>
             </div>
 

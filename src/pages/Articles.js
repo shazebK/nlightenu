@@ -11,9 +11,6 @@ const DUMMY = [
         userAvatar:"/images/courses.jpg",
         author:"ShazebK",
         date:"17 Nov",
-        tags:[
-            "Operating Systems",
-        ]
     },
     {
         id:"article-2",
@@ -23,9 +20,6 @@ const DUMMY = [
         userAvatar:"/images/courses.jpg",
         author:"Faiz Khan",
         date:"19 Nov",
-        tags:[
-            "Operating Systems",
-        ]
     },
 ]
 
