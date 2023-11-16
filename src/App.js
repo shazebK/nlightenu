@@ -23,7 +23,7 @@ const App = () => {
           element : <Home/>
         },
         {
-          path : "auth/:authtype",
+          path : "auth",
           element : <Auth/>,
         },
         {
