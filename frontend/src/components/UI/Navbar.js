@@ -13,8 +13,8 @@ const Navbar = () => {
                 <li><NavLink to = "/about" className={({isActive}) => isActive?"activeNavLink":undefined} end = {true}>About</NavLink></li>
             </ul>
             <div className="flex">
-                <Link to = "/auth/login"><Button theme = "white">Log In</Button></Link>
-                <Link to = "/auth/signup"><Button theme = "black">Sign Up</Button></Link>
+                <Link to = "/auth?mode=login"><Button theme = "white">Log In</Button></Link>
+                <Link to = "/auth?mode=signup"><Button theme = "black">Sign Up</Button></Link>
             </div>
         </nav>
     );

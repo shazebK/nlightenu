@@ -25,20 +25,8 @@ const ArticlePage = () => {
 
 export async function loader({request,params}){
     const articleId = params.articleId;
-    console.log(articleId);
-    //Fetch the data from backend with article id for now using dummy response
-    const response = {
-        id:"article-2",
-        title:"C++ Programming Language",
-        content:"C++ is the most used and most popular programming language developed by Bjarne Stroustrup.",
-        thumbnail:"/images/ai.jpg",
-        userAvatar:"/images/courses.jpg",
-        author:"Faiz Khan",
-        date:"19 Nov",
-        tags:[
-            "Operating Systems",
-        ]
-    };
+    
+    const response = await fetch("http://localhost:8080/articles/" + articleId);
 
     return response;
 }

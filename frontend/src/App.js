@@ -4,11 +4,11 @@ import { createBrowserRouter,RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
 import RootLayout from "./pages/RootLayout";
-import Articles from "./pages/Articles";
+import Articles,{loader as ArticlesLoader} from "./pages/Articles";
 import Courses from "./pages/Courses";
 import About from "./pages/About";
 import ArticlePage,{loader as ArticlePageLoader} from "./pages/ArticlePage";
-import ArticleUpload from "./pages/ArticleUpload";
+import ArticleUpload,{action as ArticleUploadAction} from "./pages/ArticleUpload";
 
 const App = () => {
 
@@ -23,7 +23,7 @@ const App = () => {
           element : <Home/>
         },
         {
-          path : "auth/:authtype",
+          path : "auth",
           element : <Auth/>,
         },
         {
@@ -32,11 +32,13 @@ const App = () => {
             {
               index:true,
               path:"",
-              element:<Articles/>
+              element:<Articles/>,
+              loader:ArticlesLoader,
             },
             {
               path:"upload",
-              element:<ArticleUpload/>
+              element:<ArticleUpload/>,
+              action:ArticleUploadAction,
             },
             {
               path:":articleId",
