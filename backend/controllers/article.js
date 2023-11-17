@@ -12,7 +12,19 @@ exports.getArticle = async(req,res,next) => {
 }
 
 exports.postArticle = async(req,res,next) => {
-    const product = new Product(req.body);
+    console.log(req.body);
+    if(!req.file){
+        return res.status(500).send("Select the valid file type");
+    }
+
+    const article = {
+        title:req.body.title,
+        content:req.body.content,
+        author:req.body.author,
+        imageUrl:"http://localhost:8080/" + req.file.path,
+    }
+
+    const product = new Product(article);
     try{
         const response = await product.save();
         res.status(200).send("Successfully saved");

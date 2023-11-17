@@ -21,8 +21,8 @@ const ArticleCard = ({article}) => {
                 </div>
             </div>
 
-            <div className="h-full w-1/5">
-                <img src ={article.thumbnail} className="h-full w-full object-cover" alt = "article_image"/>
+            <div className="h-full w-1/5 flex justify-center items-center">
+                <img src ={article.imageUrl} className="w-full max-h-60 object-contain object-center" alt = "article_image"/>
             </div>
 
         </div>

@@ -6,7 +6,7 @@ import Instagram from '../Icons/Instagram';
 
 export default function Footer() {
   return (
-        <div className='w-full flex border p-4'>
+        <div className='w-full flex border p-4 mt-8'>
             <div className='w-1/2'>
             <h1 className='text-[40px] font-medium'>Nlightenu</h1>
             <p>
