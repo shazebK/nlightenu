@@ -1,13 +1,7 @@
-const date  = require('../utils/current_date');
+const mongodb = require('mongodb');
+const { getDB } = require('../utils/database');
 
-const articles = [
-    {
-        id:"234",
-        title:"C++",
-        content:"C++ is a high level programming language",
-        date:"23 Nov 2023",
-    },
-];
+const date  = require('../utils/current_date');
 
 module.exports = class Article{
     constructor(article){
@@ -18,15 +12,17 @@ module.exports = class Article{
     }
 
     save(){
-        this.id = Math.random().toString();
-        articles.push(this);
+        const db = getDB();
+        return db.collection('articles').insertOne(this);
     }
 
     static fetchAll(){
-        return articles;
+        const db = getDB();
+        return db.collection('articles').find().toArray();
     }
 
-    static findArticle(id){
-        return articles.find(article => article.id === id);
+    static async findById(id){
+        const db = getDB();
+        return db.collection('articles').find({_id:new mongodb.ObjectId(id)}).next();
     }
 }

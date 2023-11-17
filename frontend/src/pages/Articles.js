@@ -28,7 +28,7 @@ const Articles = () => {
     return (
         <div className="w-full flex flex-col items-center">
         {
-            articles.map((article) => <Link to={article.id} key = {article.id}><ArticleCard article = {article}/></Link>)
+            articles.map((article) => <Link to={article._id} key = {article._id}><ArticleCard article = {article}/></Link>)
         }
         </div>
     )
