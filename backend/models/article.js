@@ -1,4 +1,5 @@
 const mongodb = require('mongodb');
+
 const { getDB } = require('../utils/database');
 
 const date  = require('../utils/current_date');
@@ -8,6 +9,7 @@ module.exports = class Article{
         this.author = article.author;
         this.title = article.title;
         this.content = article.content;
+        this.imageUrl = article.imageUrl;
         this.date = date();
     }
 
