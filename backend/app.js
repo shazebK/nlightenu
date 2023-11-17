@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const { mongoConnect } = require('./utils/database');
+
 const articlesRoutes = require('./routes/articles');
 
 const userRoutes = require('./routes/users');
@@ -22,4 +24,6 @@ app.use('/articles',articlesRoutes);
 
 app.use('/users',userRoutes);
 
-app.listen(8080,() => console.log("backend running"));
+mongoConnect(() => {
+    app.listen(8080,() => console.log("backend Running"));
+})
