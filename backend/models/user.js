@@ -1,22 +1,18 @@
-const users = [
-    {
-        id:"12345",
-        name:"ShazebK",
-    },
-];
+const { getDB } = require('../utils/database');
 
 module.exports = class User{
     constructor(user){
-        this.name = user.name;
+        this.username = user.username;
+        this.password = user.password;
     }   
 
     save(){
-        this.id = Math.floor(Math.random() * 10000).toString();
-        users.push(this);
+        const db = getDB();
+        return db.collection('users').insertOne(this);
     }
 
-    static fetchUser(id){
-        const user = users.find(user => user.id === id);
-        return user;
+    static findOne(query){
+        const db = getDB();
+        return db.collection('users').findOne(query);
     }
 }

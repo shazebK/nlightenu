@@ -2,7 +2,8 @@ import React from "react";
 import { createBrowserRouter,RouterProvider } from "react-router-dom";
 
 import Home from "./pages/Home";
-import Auth from "./pages/Auth";
+import ErrorPage from "./pages/Error";
+import Auth , {action as AuthAction} from "./pages/Auth";
 import RootLayout from "./pages/RootLayout";
 import Articles,{loader as ArticlesLoader} from "./pages/Articles";
 import Courses from "./pages/Courses";
@@ -16,15 +17,17 @@ const App = () => {
     {
       path:"/",
       element:<RootLayout/>,
+      errorElement:<ErrorPage/>,
       children:[
         {
           index:true,
           path : "",
-          element : <Home/>
+          element : <Home/>,
         },
         {
           path : "auth",
           element : <Auth/>,
+          action:AuthAction,
         },
         {
           path : "articles/",

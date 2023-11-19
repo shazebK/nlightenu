@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import { Form, redirect } from "react-router-dom";
+import { Form, json, redirect, useActionData } from "react-router-dom";
 import ImageIcon from "../components/Icons/Image";
 
 const ArticleUpload = () => {
+    const errors = useActionData();
+    console.log(errors);
+
     const [coverText,setCoverText] = useState("");
     const coverImageChange = (event) => {
         if(event.target.files[0]){
@@ -16,6 +19,14 @@ const ArticleUpload = () => {
             <div className="w-full h-16 bg-gray-800 flex justify-center items-center">
                 <h1 className="text-white text-xl">Publish Your Article</h1>
             </div>
+
+            {
+            errors && 
+            <ul style = {{color:"red"}}>
+                {Object.values(errors).map(message => <li key = {message}> {message} </li>)}
+            </ul>
+            }
+
             <Form method = 'post' className="w-full h-full flex flex-col" encType="multipart/form-data">
                 
                 <div className="w-full flex items-center justify-end">
@@ -39,14 +50,14 @@ export default ArticleUpload;
 export async function action({request,params}){
     const data = await request.formData();
 
-    //Get the details of the user here
-    const userId = "12345"
-    const userData = await fetch('http://localhost:8080/users/' + userId);
-    const user = await userData.json();
+    // //Get the details of the user here
+    // const userId = "12345"
+    // const userData = await fetch('http://localhost:8080/users/' + userId);
+    // const user = await userData.json();
 
     const formData  = new FormData();
       
-    formData.append('author',user.name);
+    formData.append('author','shazebK');
     formData.append('title', data.get('title'));
     formData.append('content', data.get('content'));
     formData.append('image', data.get('image'));
@@ -56,8 +67,12 @@ export async function action({request,params}){
       body: formData
     });
 
+    if(response.status === 422){
+        return response;
+    }
+
     if(!response.ok){
-        console.log("article not saved");
+        throw json({message:"Could not upload your article"},{status:500});
     }
 
     return redirect('/articles');
