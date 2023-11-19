@@ -1,5 +1,5 @@
 import React from "react";
-import { Link , useLoaderData } from "react-router-dom";
+import { Link , useLoaderData, json} from "react-router-dom";
 import ArticleCard from "../components/UI/ArticleCard";
 
 const Articles = () => {
@@ -13,10 +13,15 @@ const Articles = () => {
     )
 }
 
+export default Articles;
+
+
 export async function loader(){
     const response = await fetch('http://localhost:8080/articles');
 
+    if(!response.ok){
+        return json({message:"Could not fetch articles"},{status:500});
+    }
+
     return response;
 }
-
-export default Articles;

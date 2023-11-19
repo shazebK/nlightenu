@@ -1,9 +1,11 @@
+const mongodb = require('mongodb');
+
 const Product = require('../models/article');
 
 exports.getArticle = async(req,res,next) => {
     const articleId = req.params.articleId;
     try{
-        const article = await Product.findById(articleId);
+        const article = await Product.findOne({_id:new mongodb.ObjectId(articleId)});
         res.json(article);
     }
     catch(error){
@@ -12,9 +14,22 @@ exports.getArticle = async(req,res,next) => {
 }
 
 exports.postArticle = async(req,res,next) => {
-    console.log(req.body);
+    let errors = {};
     if(!req.file){
-        return res.status(500).send("Select the valid file type");
+        // return res.status(422).send("Select the valid file type");
+        errors.image = "Select valid image";
+    }
+
+    if(req.body.title.length===0 || req.body.title.length > 40){
+        errors.title = "Select appropriate length for title";
+    }
+
+    if(req.body.content.length === 0){
+        errors.content = "Enter some content";
+    }
+
+    if(Object.keys(errors).length > 0){
+        return res.status(422).send(errors);
     }
 
     const article = {
@@ -27,7 +42,7 @@ exports.postArticle = async(req,res,next) => {
     const product = new Product(article);
     try{
         const response = await product.save();
-        res.status(200).send("Successfully saved");
+        return res.status(200).send("Successfully saved");
     }
     catch(error){
         console.log(error);
@@ -37,9 +52,10 @@ exports.postArticle = async(req,res,next) => {
 exports.getAllArticles = async(req,res,next) => {
     try{
         const response = await Product.fetchAll();
-        res.send(response);
+        return res.send(response);
     }
     catch(error){
         console.log(error);
+        return res.status(500).send("Could not fetch articles");
     }
 }

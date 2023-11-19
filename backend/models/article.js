@@ -23,8 +23,8 @@ module.exports = class Article{
         return db.collection('articles').find().toArray();
     }
 
-    static async findById(id){
+    static async findOne(query){
         const db = getDB();
-        return db.collection('articles').find({_id:new mongodb.ObjectId(id)}).next();
+        return db.collection('articles').findOne(query);
     }
 }
