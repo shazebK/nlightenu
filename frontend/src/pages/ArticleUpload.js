@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Form, json, redirect, useActionData } from "react-router-dom";
 import ImageIcon from "../components/Icons/Image";
+import { getCookie } from "../utils/auth";
 
 const ArticleUpload = () => {
     const errors = useActionData();
-    console.log(errors);
 
     const [coverText,setCoverText] = useState("");
     const coverImageChange = (event) => {
@@ -61,9 +61,14 @@ export async function action({request,params}){
     formData.append('title', data.get('title'));
     formData.append('content', data.get('content'));
     formData.append('image', data.get('image'));
-  
+
+    const token = getCookie('token');
+
     const response = await fetch('http://localhost:8080/articles', {
       method: 'POST',
+      headers:{
+        'Authorization': 'Bearer ' + token,
+      },
       body: formData
     });
 
@@ -72,7 +77,7 @@ export async function action({request,params}){
     }
 
     if(!response.ok){
-        throw json({message:"Could not upload your article"},{status:500});
+        throw json({message:"Could not upload your article"},{status:response.status});
     }
 
     return redirect('/articles');

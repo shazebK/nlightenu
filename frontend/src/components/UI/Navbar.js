@@ -1,8 +1,9 @@
 import React from "react";
-import { NavLink,Link } from "react-router-dom";
+import { NavLink,Link, Form, useRouteLoaderData } from "react-router-dom";
 import Button from "./Button";
 
 const Navbar = () => {
+    const token = useRouteLoaderData('root');
     return (
         <nav className="w-full h-16 flex items-center justify-around border-b-2 border-gray-200">
             <h2 className="text-[32px]"><Link to = "/">NLightenU</Link></h2>
@@ -13,8 +14,16 @@ const Navbar = () => {
                 <li><NavLink to = "/about" className={({isActive}) => isActive?"activeNavLink":undefined} end = {true}>About</NavLink></li>
             </ul>
             <div className="flex">
-                <Link to = "/auth?mode=login"><Button theme = "white">Log In</Button></Link>
-                <Link to = "/auth?mode=signup"><Button theme = "black">Sign Up</Button></Link>
+                
+                {!token && <Link to = "/auth?mode=login"><Button theme = "white">Log In</Button></Link>}
+                {!token && <Link to = "/auth?mode=signup"><Button theme = "black">Sign Up</Button></Link>}
+                
+                {
+                token && 
+                <Form action = "/logout" method = "post">
+                    <button>Logout</button>
+                </Form>
+                }
             </div>
         </nav>
     );

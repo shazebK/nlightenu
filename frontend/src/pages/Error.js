@@ -12,6 +12,11 @@ const ErrorPage = () => {
         message = error.data.message;
     }
 
+    if(error.status === 401){
+        title = "Not Authenticated";
+        message = error.data.message;
+    }
+
     if(error.status === 404){
         title = "Not Found";
         message = "Could not Find the resource you are looking for";

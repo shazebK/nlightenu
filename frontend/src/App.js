@@ -10,14 +10,18 @@ import Courses from "./pages/Courses";
 import About from "./pages/About";
 import ArticlePage,{loader as ArticlePageLoader} from "./pages/ArticlePage";
 import ArticleUpload,{action as ArticleUploadAction} from "./pages/ArticleUpload";
+import {action as logoutAction} from "./pages/Logout"
+import {getTokenLoader,checkAuthLoader} from "./utils/auth";
 
 const App = () => {
 
   const router = createBrowserRouter([
     {
+      id:"root",
       path:"/",
       element:<RootLayout/>,
       errorElement:<ErrorPage/>,
+      loader:getTokenLoader,
       children:[
         {
           index:true,
@@ -28,6 +32,10 @@ const App = () => {
           path : "auth",
           element : <Auth/>,
           action:AuthAction,
+        },
+        {
+          path: "logout",
+          action:logoutAction,
         },
         {
           path : "articles/",
@@ -42,6 +50,7 @@ const App = () => {
               path:"upload",
               element:<ArticleUpload/>,
               action:ArticleUploadAction,
+              loader:checkAuthLoader,
             },
             {
               path:":articleId",
