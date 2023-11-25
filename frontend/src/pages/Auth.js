@@ -1,5 +1,6 @@
 import { useSearchParams, Form, redirect, useActionData, json} from "react-router-dom";
 import classes from "./Auth.module.css";
+import { saveToken } from "../utils/auth";
 
 const Auth =()=>{
   const [searchParams] = useSearchParams();
@@ -83,7 +84,7 @@ export async function action({request,params}){
   //If response data is starting with a number it cant parse it :)
 
   const responseData = await response.json();
-  console.log(responseData.sessionId);
-
+  saveToken(responseData);
+  
   return redirect('/');
 }

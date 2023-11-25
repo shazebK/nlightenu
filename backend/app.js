@@ -2,8 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const path = require('path');
-const session = require('express-session');
-const MongodbStore = require('connect-mongodb-session')(session);
 require('dotenv').config();
 
 const { mongoConnect } = require('./utils/database');
@@ -36,35 +34,16 @@ const fileFilter = (req, file, cb) => {
     }
 }
 
-const store = new MongodbStore({
-    uri: process.env.MONGO_URI,
-    collection: 'sessions',
-});
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(multer({ storage: fileStorage, fileFilter: fileFilter }).single('image'));
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-//Later you may have to fix this
-app.use(
-    session({
-        secret: 'my hero academia', 
-        resave: false, 
-        saveUninitialized: false, 
-        store: store, 
-        cookie:{
-            secure:false,
-            maxAge:1000 * 60 * 60 * 24,
-        }
-    })
-);
-
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization');
     next();
 });
 

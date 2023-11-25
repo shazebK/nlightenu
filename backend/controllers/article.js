@@ -1,12 +1,11 @@
 const mongodb = require('mongodb');
-
 const Product = require('../models/article');
 
 exports.getArticle = async(req,res,next) => {
     const articleId = req.params.articleId;
     try{
         const article = await Product.findOne({_id:new mongodb.ObjectId(articleId)});
-        res.json(article);
+        return res.json(article);
     }
     catch(error){
         console.log(error);
@@ -42,7 +41,7 @@ exports.postArticle = async(req,res,next) => {
     const product = new Product(article);
     try{
         const response = await product.save();
-        return res.status(200).send("Successfully saved");
+        return res.status(200).json("Successfully saved");
     }
     catch(error){
         console.log(error);
@@ -52,10 +51,10 @@ exports.postArticle = async(req,res,next) => {
 exports.getAllArticles = async(req,res,next) => {
     try{
         const response = await Product.fetchAll();
-        return res.send(response);
+        return res.json(response);
     }
     catch(error){
         console.log(error);
-        return res.status(500).send("Could not fetch articles");
+        return res.status(500).json("Could not fetch articles");
     }
 }
