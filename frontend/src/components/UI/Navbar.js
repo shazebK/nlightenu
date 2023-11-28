@@ -10,7 +10,7 @@ const Navbar = () => {
             <ul className="w-1/2 flex justify-around">
                 <li><NavLink to = "/" className={({isActive}) => isActive?"activeNavLink":undefined} end = {true}>Home</NavLink></li>
                 <li><NavLink to = "/articles" className={({isActive}) => isActive?"activeNavLink":undefined}>Articles</NavLink></li>
-                <li><NavLink to = "/courses" className={({isActive}) => isActive?"activeNavLink":undefined} end = {true}>Courses</NavLink></li>
+                <li><a href = "https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems">Courses</a></li>
                 <li><NavLink to = "/about" className={({isActive}) => isActive?"activeNavLink":undefined} end = {true}>About</NavLink></li>
             </ul>
             <div className="flex">

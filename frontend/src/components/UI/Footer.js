@@ -10,9 +10,10 @@ export default function Footer() {
             <div className='w-1/2'>
             <h1 className='text-[40px] font-medium'>Nlightenu</h1>
             <p>
-                I and writing some content to show some work done.I and writing some content to show some work done
-                I and writing some content to show some work done
-                I and writing some content to show some work done
+                Explore a world of knowledge with Nlightenu Your Gateway to Learning. 
+                Upload, read, and enroll in courses to expand your horizons. 
+                Embrace the journey of continuous learning and discovery with Nlightenu. 
+                Visit us for more information.
             </p>
             </div>
             <div className='w-1/2 flex flex-col items-center'>

@@ -5,7 +5,6 @@ import { useLoaderData } from "react-router-dom";
 
 const ArticlePage = () => {
     const article = useLoaderData();
-    console.log(article);
     return (
         <div className="w-full flex flex-col px-8">
             <div className="w-full py-4 my-4">
@@ -16,7 +15,7 @@ const ArticlePage = () => {
                 </div>
                 <p className="text-md text-gray-600">{article.date}</p>
             </div>
-            <div className="w-full mb-2">
+            <div className="w-full mb-8">
                 <img src = {article.imageUrl} className="w-full max-h-72 object-contain" alt = "article_cover"/>
             </div>
             <div>
